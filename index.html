@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Chiku's Birthday Quest ✦</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Animated background -->
+  <div class="background">
+    <div class="moon"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+  </div>
+
+  <!-- Floating particles -->
+  <div class="particles"></div>
+
+  <main class="game">
+
+    <!-- ================= INTRO ================= -->
+
+    <section class="screen active" id="intro">
+
+      <div class="eyebrow">
+        ✦ A NEW QUEST HAS APPEARED ✦
+      </div>
+
+      <h1>
+        Chiku's<br>
+        <span>Birthday Quest</span>
+      </h1>
+
+      <p class="subtitle">
+        An unexpected adventure awaits, Traveler...
+      </p>
+
+      <div class="quest-card">
+
+        <div class="quest-icon">
+          !
+        </div>
+
+        <div>
+          <small>NEW QUEST</small>
+
+          <h2>
+            The Birthday of Chiku
+          </h2>
+
+          <p>
+            Paimon has discovered something very important...
+          </p>
+        </div>
+
+      </div>
+
+      <button class="primary" onclick="nextScreen()">
+        ✦ ACCEPT QUEST ✦
+      </button>
+
+      <p class="tiny">
+        Adventure Rank: ??? &nbsp; • &nbsp; Difficulty: ★★★★★
+      </p>
+
+    </section>
+
+
+    <!-- ================= QUEST ================= -->
+
+    <section class="screen" id="quest">
+
+      <div class="quest-title">
+        MAIN QUEST
+      </div>
+
+      <h2>
+        🎂 The Birthday Adventure Begins!
+      </h2>
+
+      <div class="dialogue">
+
+        <div class="avatar">
+          ✦
+        </div>
+
+        <div>
+
+          <strong>Paimon</strong>
+
+          <p>
+            Chiku has unlocked another year of life!
+            Your mission is simple:
+            celebrate, eat cake, make memories,
+            and cause a little chaos.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="details">
+
+        <div class="detail">
+
+          <span>📅</span>
+
+          <div>
+            <small>DATE</small>
+            <strong>19 AUGUST</strong>
+          </div>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span>⏰</span>
+
+          <div>
+            <small>TIME</small>
+            <strong>TO BE REVEALED</strong>
+          </div>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span>📍</span>
+
+          <div>
+            <small>LOCATION</small>
+            <strong>TO BE REVEALED</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <button class="primary" onclick="nextScreen()">
+        VIEW CHARACTER CARD →
+      </button>
+
+    </section>
+
+
+    <!-- ================= CHARACTER ================= -->
+
+    <section class="screen" id="character">
+
+      <div class="rarity">
+        ✦ ✦ ✦ ✦ ✦
+      </div>
+
+      <div class="character-orb">
+        ✦
+      </div>
+
+      <h2>
+        CHIKU
+      </h2>
+
+      <p class="character-title">
+        The Birthday Wanderer
+      </p>
+
+
+      <div class="character-card">
+
+        <div class="stat">
+
+          <span>
+            ELEMENT
+          </span>
+
+          <b>
+            ???
+          </b>
+
+        </div>
+
+
+        <div class="stat">
+
+          <span>
+            WEAPON
+          </span>
+
+          <b>
+            CAKE 🍰
+          </b>
+
+        </div>
+
+
+        <div class="stat">
+
+          <span>
+            CONSTELLATION
+          </span>
+
+          <b>
+            Birthdayus Maximus
+          </b>
+
+        </div>
+
+
+        <div class="stat">
+
+          <span>
+            ADVENTURE RANK
+          </span>
+
+          <b>
+            99+
+          </b>
+
+        </div>
+
+      </div>
+
+
+      <p class="hint">
+        Character details will be revealed soon...
+      </p>
+
+
+      <button class="primary" onclick="nextScreen()">
+        START ADVENTURE ✦
+      </button>
+
+    </section>
+
+
+    <!-- ================= FINAL ================= -->
+
+    <section class="screen" id="final">
+
+      <div class="success">
+        ✦ QUEST ACCEPTED ✦
+      </div>
+
+      <div class="cake">
+        🎂
+      </div>
+
+      <h1>
+        See you there,<br>
+        <span>Traveler!</span>
+      </h1>
+
+      <p class="final-text">
+
+        Prepare your best party outfit,
+        your appetite,
+        and your luck stat.
+
+      </p>
+
+
+      <div class="reward">
+
+        <small>
+          QUEST REWARD
+        </small>
+
+        <strong>
+          ✨ A Legendary Birthday Memory ✨
+        </strong>
+
+        <span>
+          +500 Primogems
+          &nbsp; • &nbsp;
+          +1 Happy Birthday
+        </span>
+
+      </div>
+
+
+      <button class="secondary" onclick="restart()">
+        ↻ REPLAY QUEST
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    Made with ✦ for Chiku's birthday
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
