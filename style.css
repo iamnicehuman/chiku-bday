@@ -86,127 +86,102 @@ body {
    CRESCENT MOON
 ========================================================= */
 
+/* =========================================================
+   CRESCENT MOON 🌙
+========================================================= */
+
 .moon {
   position: absolute;
 
-  width: 240px;
-  height: 240px;
+  width: 230px;
+  height: 230px;
 
-  top: 8%;
-  right: 7%;
+  top: 9%;
+  right: 8%;
 
   border-radius: 50%;
 
-  background:
-    radial-gradient(
-      circle at 38% 35%,
-      #fffdf0 0%,
-      #fff2bd 42%,
-      #f0c965 75%,
-      #c58d35 100%
-    );
-
-  box-shadow:
-    0 0 12px rgba(255, 246, 210, 0.95),
-    0 0 35px rgba(245, 215, 139, 0.55),
-    0 0 80px rgba(214, 42, 60, 0.22);
-
-  opacity: 0.9;
+  background: linear-gradient(
+    135deg,
+    #fffdf0 0%,
+    #fff3c4 45%,
+    #f2cf7a 75%,
+    #d9a64d 100%
+  );
 
   /*
-    The dark circle cuts a small section
-    out of the moon to create the crescent.
-    It matches the sky colour rather than
-    creating a black hole.
+    TRUE CRESCENT MASK
+
+    The transparent part is removed,
+    so there is NO black circle sitting
+    on top of the background.
   */
+
+  -webkit-mask-image:
+    radial-gradient(
+      circle at 68% 42%,
+      transparent 0,
+      transparent 58%,
+      black 59%
+    );
+
+  mask-image:
+    radial-gradient(
+      circle at 68% 42%,
+      transparent 0,
+      transparent 58%,
+      black 59%
+    );
+
+  filter:
+    drop-shadow(
+      0 0 10px
+      rgba(255, 248, 215, 0.95)
+    )
+
+    drop-shadow(
+      0 0 30px
+      rgba(245, 215, 139, 0.55)
+    )
+
+    drop-shadow(
+      0 0 65px
+      rgba(190, 35, 55, 0.25)
+    );
+
+  opacity: 0.95;
+
 }
 
 
-/* Crescent cutout */
-
-.moon::after {
-  content: "";
-
-  position: absolute;
-
-  width: 225px;
-  height: 225px;
-
-  top: -22px;
-  left: 62px;
-
-  border-radius: 50%;
-
-  background:
-    #0d0710;
-
-  box-shadow:
-    inset 0 0 30px
-    rgba(50, 5, 15, 0.3);
-}
-
-
-/* Soft moon halo */
+/* Soft moon glow */
 
 .moon::before {
+
   content: "";
 
   position: absolute;
 
-  width: 290px;
-  height: 290px;
-
-  top: -25px;
-  left: -25px;
+  inset: 18px;
 
   border-radius: 50%;
 
-  border:
-    1px solid
-    rgba(245, 215, 139, 0.12);
-
-  box-shadow:
-    0 0 60px
-    rgba(196, 37, 55, 0.15);
-}
-
-
-/* =========================================================
-   RED ATMOSPHERIC GLOW
-========================================================= */
-
-.glow {
-  position: absolute;
-
-  border-radius: 50%;
-
-  filter: blur(90px);
-}
-
-
-.glow-1 {
-  width: 420px;
-  height: 420px;
-
-  left: -180px;
-  bottom: -180px;
-
   background:
-    rgba(172, 20, 42, 0.23);
+    rgba(255, 240, 190, 0.35);
+
+  filter:
+    blur(20px);
+
 }
 
 
-.glow-2 {
-  width: 280px;
-  height: 280px;
+/* IMPORTANT:
+   There is NO second black circle.
+*/
 
-  right: 15%;
-  top: 45%;
-
-  background:
-    rgba(174, 24, 43, 0.14);
+.moon::after {
+  content: none;
 }
-
 
 /* =========================================================
    STARS
