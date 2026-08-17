@@ -1,27 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
 
 
-/* ==============================
-   BASIC
-============================== */
+/* =========================================================
+   GENERAL
+========================================================= */
 
 * {
   box-sizing: border-box;
 }
 
 :root {
-
   --red: #d93636;
-  --red-dark: #7d1821;
+  --red-bright: #f04b4b;
+  --red-dark: #6f111d;
 
   --gold: #f5d78b;
   --gold-light: #fff1bd;
 
-  --dark: #07080d;
-  --blue-dark: #11182a;
+  --cream: #fff6d8;
 
-  --glass: rgba(12, 12, 20, 0.78);
+  --dark: #05060a;
+  --dark-red: #16070b;
 
+  --glass: rgba(10, 11, 18, 0.78);
+}
+
+
+html {
+  scroll-behavior: smooth;
 }
 
 
@@ -35,34 +41,46 @@ body {
 
   font-family: 'Nunito', sans-serif;
 
+  overflow-x: hidden;
+
   background:
+
+    /* red moon glow */
     radial-gradient(
-      circle at 50% 20%,
-      rgba(150, 25, 35, 0.35),
+      circle at 76% 17%,
+      rgba(170, 25, 40, 0.38),
+      transparent 28%
+    ),
+
+    /* red lower glow */
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(130, 15, 30, 0.28),
       transparent 35%
     ),
 
+    /* subtle gold glow */
     radial-gradient(
-      circle at 20% 80%,
-      rgba(100, 10, 20, 0.30),
+      circle at 50% 45%,
+      rgba(180, 130, 55, 0.06),
       transparent 35%
     ),
 
+    /* main sky */
     linear-gradient(
       145deg,
-      #030407,
-      #12070b 45%,
-      #090d18
+      #020308 0%,
+      #0b080e 35%,
+      #16080d 62%,
+      #050811 100%
     );
-
-  overflow-x: hidden;
 
 }
 
 
-/* ==============================
-   RED BACKGROUND GLOW
-============================== */
+/* =========================================================
+   CRESCENT MOON
+========================================================= */
 
 .background {
 
@@ -70,45 +88,118 @@ body {
 
   inset: 0;
 
-  pointer-events: none;
-
   overflow: hidden;
 
-  z-index: -2;
+  pointer-events: none;
+
+  z-index: -5;
 
 }
 
+
+/* Main moon */
 
 .moon {
 
   position: absolute;
 
-  width: 330px;
-  height: 330px;
+  width: 310px;
+
+  height: 310px;
+
+  top: 6%;
+
+  right: -55px;
 
   border-radius: 50%;
 
-  top: 8%;
-  right: -100px;
-
   background:
+
     radial-gradient(
-      circle at 35% 35%,
-      #fff4d0,
-      #e9b96a 40%,
-      #8e242b 70%,
-      transparent 72%
+      circle at 40% 40%,
+      #fffbea 0%,
+      #fff1bd 45%,
+      #f0c968 72%,
+      #c38b38 100%
     );
 
-  opacity: 0.18;
-
-  filter: blur(1px);
+  opacity: 0.95;
 
   box-shadow:
-    0 0 100px rgba(230, 60, 70, 0.35);
+
+    0 0 15px
+    rgba(255, 245, 205, 0.9),
+
+    0 0 40px
+    rgba(245, 215, 139, 0.65),
+
+    0 0 90px
+    rgba(230, 75, 75, 0.30),
+
+    0 0 150px
+    rgba(190, 30, 50, 0.15);
 
 }
 
+
+/*
+   This dark circle cuts into the moon
+   and creates the crescent.
+*/
+
+.moon::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 310px;
+
+  height: 310px;
+
+  top: -28px;
+
+  left: -57px;
+
+  border-radius: 50%;
+
+  background: #080910;
+
+}
+
+
+/* Extra red halo around moon */
+
+.moon::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 380px;
+
+  height: 380px;
+
+  top: -35px;
+
+  left: -35px;
+
+  border-radius: 50%;
+
+  border: 1px solid
+    rgba(245, 215, 139, 0.12);
+
+  box-shadow:
+
+    0 0 60px
+    rgba(170, 30, 45, 0.18);
+
+}
+
+
+/* =========================================================
+   BACKGROUND GLOWS
+========================================================= */
 
 .glow {
 
@@ -116,42 +207,93 @@ body {
 
   border-radius: 50%;
 
-  filter: blur(90px);
+  filter: blur(100px);
 
 }
 
 
 .glow-1 {
 
-  width: 400px;
-  height: 400px;
+  width: 450px;
 
-  left: -150px;
-  bottom: -100px;
+  height: 450px;
 
-  background: rgba(170, 20, 30, 0.28);
+  left: -220px;
+
+  bottom: -180px;
+
+  background:
+    rgba(170, 20, 35, 0.25);
 
 }
 
 
 .glow-2 {
 
-  width: 300px;
-  height: 300px;
+  width: 350px;
 
-  right: 10%;
+  height: 350px;
+
+  right: 5%;
+
   top: 45%;
 
-  background: rgba(190, 30, 45, 0.15);
+  background:
+    rgba(150, 20, 40, 0.12);
 
 }
 
 
-/* ==============================
-   STARS / PARTICLES
-============================== */
+/* =========================================================
+   STARS
+========================================================= */
 
-body::before,
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: -2;
+
+  background-image:
+
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.95) 1px,
+      transparent 1.5px
+    ),
+
+    radial-gradient(
+      circle,
+      rgba(245, 215, 139, 0.75) 1px,
+      transparent 1.5px
+    );
+
+  background-size:
+
+    90px 90px,
+
+    150px 150px;
+
+  background-position:
+
+    10px 20px,
+
+    50px 80px;
+
+  opacity: 0.55;
+
+  animation:
+    starsMove 28s linear infinite;
+
+}
+
+
 body::after {
 
   content: "";
@@ -162,49 +304,23 @@ body::after {
 
   pointer-events: none;
 
-  z-index: -1;
+  z-index: -3;
 
   background-image:
 
     radial-gradient(
       circle,
-      rgba(255,255,255,0.9) 1px,
-      transparent 1px
-    ),
-
-    radial-gradient(
-      circle,
-      rgba(245,215,139,0.7) 1px,
-      transparent 1px
+      rgba(255, 255, 255, 0.8) 1px,
+      transparent 1.5px
     );
 
   background-size:
-    90px 90px,
-    150px 150px;
+    190px 190px;
 
-  opacity: 0.5;
-
-}
-
-
-body::before {
+  opacity: 0.35;
 
   animation:
-    starsMove 25s linear infinite;
-
-}
-
-
-body::after {
-
-  background-size:
-    170px 170px,
-    220px 220px;
-
-  opacity: 0.3;
-
-  animation:
-    starsMoveReverse 35s linear infinite;
+    starsMoveReverse 40s linear infinite;
 
 }
 
@@ -216,7 +332,7 @@ body::after {
   }
 
   to {
-    transform: translateY(100px);
+    transform: translateY(90px);
   }
 
 }
@@ -225,7 +341,7 @@ body::after {
 @keyframes starsMoveReverse {
 
   from {
-    transform: translateY(100px);
+    transform: translateY(80px);
   }
 
   to {
@@ -235,9 +351,9 @@ body::after {
 }
 
 
-/* ==============================
-   MAIN
-============================== */
+/* =========================================================
+   MAIN WEBSITE
+========================================================= */
 
 .game {
 
@@ -253,7 +369,7 @@ body::after {
 
   justify-content: center;
 
-  padding: 60px 0 80px;
+  padding: 70px 0 90px;
 
 }
 
@@ -267,7 +383,7 @@ body::after {
   display: none;
 
   animation:
-    appear 0.7s ease;
+    screenAppear 0.75s ease;
 
 }
 
@@ -279,7 +395,7 @@ body::after {
 }
 
 
-@keyframes appear {
+@keyframes screenAppear {
 
   from {
 
@@ -304,29 +420,16 @@ body::after {
 }
 
 
-/* ==============================
-   TEXT
-============================== */
-
-.eyebrow,
-.quest-title,
-.success {
-
-  color: var(--gold);
-
-  letter-spacing: 3px;
-
-  font-size: 0.78rem;
-
-  font-weight: 700;
-
-}
-
+/* =========================================================
+   HEADINGS
+========================================================= */
 
 h1,
 h2 {
 
-  font-family: 'Cinzel', serif;
+  font-family:
+    'Cinzel',
+    serif;
 
   font-weight: 600;
 
@@ -343,7 +446,9 @@ h1 {
   margin: 18px 0;
 
   text-shadow:
-    0 5px 30px rgba(0,0,0,0.7);
+
+    0 5px 30px
+    rgba(0, 0, 0, 0.75);
 
 }
 
@@ -353,8 +458,9 @@ h1 span {
   color: var(--gold);
 
   text-shadow:
+
     0 0 25px
-    rgba(245,215,139,0.35);
+    rgba(245, 215, 139, 0.35);
 
 }
 
@@ -370,56 +476,94 @@ h2 {
 }
 
 
-.subtitle,
-.final-text {
+.eyebrow,
+.quest-title,
+.success {
 
-  color: #d8dbe3;
+  color:
+    var(--gold);
 
-  font-size: 1.05rem;
+  letter-spacing:
+    3px;
+
+  font-size:
+    0.78rem;
+
+  font-weight:
+    700;
 
 }
 
 
-/* ==============================
+.subtitle {
+
+  color:
+    #d8dbe3;
+
+  font-size:
+    1.05rem;
+
+}
+
+
+.tiny {
+
+  color:
+    #727b8d;
+
+  font-size:
+    0.75rem;
+
+  margin-top:
+    18px;
+
+}
+
+
+/* =========================================================
    QUEST CARD
-============================== */
+========================================================= */
 
 .quest-card {
 
-  display: flex;
+  display:
+    flex;
 
-  text-align: left;
+  text-align:
+    left;
 
-  gap: 18px;
+  gap:
+    18px;
 
-  padding: 22px;
+  padding:
+    22px;
 
-  margin: 35px 0;
+  margin:
+    35px 0;
 
   background:
+
     linear-gradient(
       135deg,
-      rgba(90, 15, 25, 0.75),
-      rgba(15, 16, 25, 0.85)
+      rgba(90, 10, 25, 0.78),
+      rgba(12, 13, 20, 0.88)
     );
 
   border:
-
     1px solid
-    rgba(245,215,139,0.45);
+    rgba(245, 215, 139, 0.45);
 
   border-left:
-
     4px solid
     var(--red);
 
   box-shadow:
 
     0 20px 60px
-    rgba(0,0,0,0.45),
+    rgba(0, 0, 0, 0.5),
 
     inset 0 0 40px
-    rgba(150,20,30,0.08);
+    rgba(170, 20, 35, 0.08);
 
   backdrop-filter:
     blur(12px);
@@ -429,75 +573,91 @@ h2 {
 
 .quest-icon {
 
-  width: 44px;
+  width:
+    44px;
 
-  height: 44px;
+  height:
+    44px;
 
-  display: grid;
+  display:
+    grid;
 
-  place-items: center;
+  place-items:
+    center;
 
   border:
-
     2px solid
     var(--gold);
 
-  color: var(--gold);
+  color:
+    var(--gold);
 
-  border-radius: 50%;
+  border-radius:
+    50%;
 
-  font-family: 'Cinzel', serif;
+  font-family:
+    'Cinzel',
+    serif;
 
-  font-size: 1.4rem;
+  font-size:
+    1.4rem;
 
-  flex-shrink: 0;
+  flex-shrink:
+    0;
 
   box-shadow:
+
     0 0 15px
-    rgba(245,215,139,0.25);
+    rgba(245, 215, 139, 0.25);
 
 }
 
 
-.quest-card small,
-.detail small,
-.stat span,
-.reward small {
+.quest-card small {
 
-  display: block;
+  display:
+    block;
 
-  color: #9da7b7;
+  color:
+    #9da7b7;
 
-  font-size: 0.7rem;
+  font-size:
+    0.7rem;
 
-  letter-spacing: 2px;
+  letter-spacing:
+    2px;
 
-  font-weight: 700;
+  font-weight:
+    700;
 
 }
 
 
 .quest-card h2 {
 
-  font-size: 1.2rem;
+  font-size:
+    1.2rem;
 
-  margin: 5px 0;
+  margin:
+    5px 0;
 
 }
 
 
 .quest-card p {
 
-  margin: 0;
+  margin:
+    0;
 
-  color: #c5cad4;
+  color:
+    #c5cad4;
 
 }
 
 
-/* ==============================
+/* =========================================================
    BUTTONS
-============================== */
+========================================================= */
 
 .primary,
 .secondary {
@@ -509,11 +669,14 @@ h2 {
     'Cinzel',
     serif;
 
-  font-weight: 700;
+  font-weight:
+    700;
 
-  letter-spacing: 1.5px;
+  letter-spacing:
+    1.5px;
 
-  cursor: pointer;
+  cursor:
+    pointer;
 
   transition:
     all 0.25s ease;
@@ -523,25 +686,25 @@ h2 {
 
 .primary {
 
-  color: #21080b;
+  color:
+    #21080b;
 
   background:
 
     linear-gradient(
       135deg,
-      #fff0bd,
+      #fff2c2,
       #e9c66e
     );
 
   border:
-
     1px solid
     var(--gold);
 
   box-shadow:
 
     0 8px 25px
-    rgba(245,215,139,0.18);
+    rgba(245, 215, 139, 0.18);
 
 }
 
@@ -554,7 +717,7 @@ h2 {
   box-shadow:
 
     0 12px 35px
-    rgba(245,215,139,0.35);
+    rgba(245, 215, 139, 0.4);
 
 }
 
@@ -573,10 +736,9 @@ h2 {
     var(--gold);
 
   background:
-    rgba(120,20,30,0.2);
+    rgba(100, 10, 20, 0.2);
 
   border:
-
     1px solid
     var(--gold);
 
@@ -586,55 +748,47 @@ h2 {
 .secondary:hover {
 
   background:
-    rgba(160,30,40,0.35);
+    rgba(160, 30, 40, 0.35);
 
 }
 
 
-.tiny,
-.hint {
-
-  color: #7d8797;
-
-  font-size: 0.75rem;
-
-  margin-top: 18px;
-
-}
-
-
-/* ==============================
+/* =========================================================
    PAIMON DIALOGUE
-============================== */
+========================================================= */
 
 .dialogue {
 
-  display: flex;
+  display:
+    flex;
 
-  gap: 15px;
+  gap:
+    15px;
 
-  text-align: left;
+  text-align:
+    left;
 
-  padding: 20px;
+  padding:
+    20px;
 
-  margin: 25px 0;
+  margin:
+    25px 0;
 
   background:
-    rgba(15,16,24,0.78);
+    rgba(12, 13, 20, 0.8);
 
   border:
-
     1px solid
-    rgba(245,215,139,0.35);
+    rgba(245, 215, 139, 0.35);
 
   border-left:
-
     3px solid
     var(--red);
 
   box-shadow:
+
     0 15px 40px
-    rgba(0,0,0,0.35);
+    rgba(0, 0, 0, 0.35);
 
 }
 
@@ -644,25 +798,31 @@ h2 {
   flex:
     0 0 45px;
 
-  height: 45px;
+  height:
+    45px;
 
-  display: grid;
+  display:
+    grid;
 
-  place-items: center;
+  place-items:
+    center;
 
-  border-radius: 50%;
+  border-radius:
+    50%;
 
   background:
 
     linear-gradient(
       135deg,
-      #f5d78b,
-      #b52939
+      var(--gold),
+      var(--red)
     );
 
-  color: #1c0b0d;
+  color:
+    #1c080b;
 
-  font-weight: 700;
+  font-weight:
+    700;
 
 }
 
@@ -677,27 +837,32 @@ h2 {
 
 .dialogue p {
 
-  line-height: 1.65;
+  line-height:
+    1.65;
 
-  color: #d6d9e0;
+  color:
+    #d6d9e0;
 
-  margin-bottom: 0;
+  margin-bottom:
+    0;
 
 }
 
 
-/* ==============================
-   DETAILS
-============================== */
+/* =========================================================
+   DATE / TIME / LOCATION
+========================================================= */
 
 .details {
 
-  display: grid;
+  display:
+    grid;
 
   grid-template-columns:
     repeat(3, 1fr);
 
-  gap: 10px;
+  gap:
+    10px;
 
   margin:
     22px 0 30px;
@@ -711,54 +876,81 @@ h2 {
     18px 10px;
 
   background:
-    rgba(255,255,255,0.035);
+    rgba(255, 255, 255, 0.035);
 
   border:
     1px solid
-    rgba(255,255,255,0.09);
+    rgba(255, 255, 255, 0.09);
 
   transition:
-    0.25s;
+    all 0.25s ease;
 
 }
 
 
 .detail:hover {
 
-  border-color:
-    rgba(245,215,139,0.35);
-
   transform:
     translateY(-3px);
+
+  border-color:
+    rgba(245, 215, 139, 0.4);
+
+  box-shadow:
+    0 10px 30px
+    rgba(120, 20, 30, 0.2);
 
 }
 
 
 .detail span {
 
-  display: block;
+  display:
+    block;
 
-  font-size: 1.5rem;
+  font-size:
+    1.5rem;
 
-  margin-bottom: 8px;
+  margin-bottom:
+    8px;
+
+}
+
+
+.detail small {
+
+  display:
+    block;
+
+  color:
+    #9da7b7;
+
+  font-size:
+    0.7rem;
+
+  letter-spacing:
+    2px;
 
 }
 
 
 .detail strong {
 
-  display: block;
+  display:
+    block;
 
-  margin-top: 5px;
+  margin-top:
+    5px;
 
-  font-size: 0.82rem;
+  font-size:
+    0.82rem;
 
 }
 
 
-/* ==============================
-   CHARACTER
-============================== */
+/* =========================================================
+   CHARACTER CARD
+========================================================= */
 
 .rarity {
 
@@ -776,17 +968,23 @@ h2 {
 
 .character-orb {
 
-  width: 110px;
+  width:
+    110px;
 
-  height: 110px;
+  height:
+    110px;
 
-  margin: auto;
+  margin:
+    auto;
 
-  display: grid;
+  display:
+    grid;
 
-  place-items: center;
+  place-items:
+    center;
 
-  border-radius: 50%;
+  border-radius:
+    50%;
 
   border:
     2px solid
@@ -802,18 +1000,18 @@ h2 {
 
     radial-gradient(
       circle,
-      rgba(190,25,40,0.4),
-      rgba(30,5,10,0.2) 60%,
-      transparent 70%
+      rgba(190, 25, 40, 0.45),
+      rgba(30, 5, 10, 0.2) 60%,
+      transparent 72%
     );
 
   box-shadow:
 
     0 0 30px
-    rgba(180,25,40,0.35),
+    rgba(180, 25, 40, 0.35),
 
     0 0 60px
-    rgba(245,215,139,0.12);
+    rgba(245, 215, 139, 0.12);
 
   animation:
     orbPulse 3s ease-in-out infinite;
@@ -823,25 +1021,28 @@ h2 {
 
 @keyframes orbPulse {
 
-  0%, 100% {
+  0%,
+  100% {
 
     transform:
       scale(1);
 
     box-shadow:
+
       0 0 30px
-      rgba(180,25,40,0.3);
+      rgba(180, 25, 40, 0.3);
 
   }
 
   50% {
 
     transform:
-      scale(1.05);
+      scale(1.06);
 
     box-shadow:
-      0 0 50px
-      rgba(200,35,45,0.5);
+
+      0 0 55px
+      rgba(200, 35, 45, 0.5);
 
   }
 
@@ -874,17 +1075,18 @@ h2 {
 
     linear-gradient(
       135deg,
-      rgba(65,10,18,0.65),
-      rgba(12,13,20,0.85)
+      rgba(65, 10, 18, 0.68),
+      rgba(12, 13, 20, 0.88)
     );
 
   border:
     1px solid
-    rgba(245,215,139,0.4);
+    rgba(245, 215, 139, 0.4);
 
   box-shadow:
+
     0 20px 60px
-    rgba(0,0,0,0.45);
+    rgba(0, 0, 0, 0.45);
 
 }
 
@@ -905,7 +1107,7 @@ h2 {
 
   border-bottom:
     1px solid
-    rgba(255,255,255,0.08);
+    rgba(255, 255, 255, 0.08);
 
 }
 
@@ -914,6 +1116,20 @@ h2 {
 
   border-bottom:
     0;
+
+}
+
+
+.stat span {
+
+  color:
+    #9da7b7;
+
+  font-size:
+    0.7rem;
+
+  letter-spacing:
+    2px;
 
 }
 
@@ -929,9 +1145,23 @@ h2 {
 }
 
 
-/* ==============================
-   FINAL
-============================== */
+.hint {
+
+  color:
+    #7d8797;
+
+  font-size:
+    0.75rem;
+
+  margin:
+    18px 0;
+
+}
+
+
+/* =========================================================
+   FINAL SCREEN
+========================================================= */
 
 .success {
 
@@ -939,18 +1169,18 @@ h2 {
     0.9rem;
 
   animation:
-    glow 2s infinite alternate;
+    goldGlow 2s infinite alternate;
 
 }
 
 
-@keyframes glow {
+@keyframes goldGlow {
 
   from {
 
     text-shadow:
       0 0 5px
-      rgba(245,215,139,0.2);
+      rgba(245, 215, 139, 0.2);
 
   }
 
@@ -958,7 +1188,7 @@ h2 {
 
     text-shadow:
       0 0 22px
-      rgba(245,215,139,0.7);
+      rgba(245, 215, 139, 0.8);
 
   }
 
@@ -974,10 +1204,25 @@ h2 {
     20px 0;
 
   filter:
+
     drop-shadow(
       0 0 20px
-      rgba(245,215,139,0.3)
+      rgba(245, 215, 139, 0.3)
     );
+
+}
+
+
+.final-text {
+
+  max-width:
+    500px;
+
+  margin:
+    auto;
+
+  line-height:
+    1.7;
 
 }
 
@@ -1006,17 +1251,32 @@ h2 {
 
     linear-gradient(
       135deg,
-      rgba(100,15,25,0.55),
-      rgba(15,15,22,0.8)
+      rgba(100, 15, 25, 0.6),
+      rgba(15, 15, 22, 0.85)
     );
 
   border:
     1px solid
-    rgba(245,215,139,0.4);
+    rgba(245, 215, 139, 0.4);
 
   box-shadow:
+
     0 20px 50px
-    rgba(0,0,0,0.35);
+    rgba(0, 0, 0, 0.35);
+
+}
+
+
+.reward small {
+
+  color:
+    #9da7b7;
+
+  font-size:
+    0.7rem;
+
+  letter-spacing:
+    2px;
 
 }
 
@@ -1040,9 +1300,9 @@ h2 {
 }
 
 
-/* ==============================
+/* =========================================================
    FOOTER
-============================== */
+========================================================= */
 
 footer {
 
@@ -1059,7 +1319,7 @@ footer {
     center;
 
   color:
-    rgba(255,255,255,0.35);
+    rgba(255, 255, 255, 0.35);
 
   font-size:
     0.7rem;
@@ -1067,16 +1327,72 @@ footer {
 }
 
 
-/* ==============================
+/* =========================================================
    MOBILE
-============================== */
+========================================================= */
 
 @media (max-width: 600px) {
 
   .game {
 
+    width:
+      90%;
+
     padding:
-      35px 0 70px;
+      40px 0 80px;
+
+  }
+
+
+  .moon {
+
+    width:
+      210px;
+
+    height:
+      210px;
+
+    right:
+      -70px;
+
+    top:
+      5%;
+
+  }
+
+
+  .moon::after {
+
+    width:
+      210px;
+
+    height:
+      210px;
+
+    top:
+      -20px;
+
+    left:
+      -40px;
+
+  }
+
+
+  .moon::before {
+
+    width:
+      270px;
+
+    height:
+      270px;
+
+  }
+
+
+  h1 {
+
+    font-size:
+      2.8rem;
 
   }
 
@@ -1122,10 +1438,19 @@ footer {
   }
 
 
-  h1 {
+  .dialogue {
 
-    font-size:
-      2.8rem;
+    padding:
+      16px;
+
+  }
+
+
+  .primary,
+  .secondary {
+
+    width:
+      100%;
 
   }
 
